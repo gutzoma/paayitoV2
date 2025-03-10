@@ -41,6 +41,7 @@ export class ReportCreditsComponent {
   public asesores!: any;
   public report: Report;
   public reportInfo!: any;
+  public sucursales!: any;
   
 
   constructor(private _generalesservice: GeneralesService, private _reportsservice: ReportsService) {
@@ -53,6 +54,7 @@ export class ReportCreditsComponent {
 
   ngOnInit(): void {
     this.getAsesores();
+    this.getSucursales();
   }
   getAsesores() {
     this._generalesservice.getAsesores().subscribe(
@@ -62,6 +64,18 @@ export class ReportCreditsComponent {
         }
       },
       error => {
+        console.log(<any>error);
+      }
+    );
+  }
+  getSucursales() {
+    this._generalesservice.getSucursales().subscribe(
+      (response) => {
+        if (response) {
+          this.sucursales = response;
+        }
+      },
+      (error) => {
         console.log(<any>error);
       }
     );

@@ -30,15 +30,18 @@
                 <mat-datepicker #pickerF></mat-datepicker>
               </div>
             </div>
-            <div class="col-md-3" style="text-align: center;">
-              <div class="dropdown">
-                <select class="form-control mb-3 select-margin" name="sucursal" #sucursal="ngModel" [(ngModel)]="report.sucursal">
-                  <option value="">Sucursal</option>
-                  <option value="01">Amecameca</option>
-                </select>
 
-              </div>
+            <div class="col-md-3"><div class="input-group-outline">
+              <label class="form-label">Sucursal</label>
+                  <select class="form-control mb-3" name="sucursal"
+                      #sucursal="ngModel" [(ngModel)]="report.sucursal">
+                      <option value="">Seleciona una Sucursal</option>
+                      <option *ngFor="let sucursal of sucursales;" value="{{sucursal.sucursal_id}}">
+                          {{sucursal.nombre}}
+                      </option>
+                  </select>
             </div>
+          </div>
             <div class="col-md-4" style="text-align: center;">
               <div class="dropdown">
                 <select  class="form-control mb-3 select-margin" name="asesor" #asesor="ngModel" [(ngModel)]="report.asesor">
